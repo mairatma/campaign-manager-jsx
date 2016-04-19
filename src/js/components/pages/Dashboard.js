@@ -1,20 +1,14 @@
 'use strict';
 
-import templates from './Dashboard.soy';
 import Component from 'metal-component';
-import Soy from 'metal-soy';
+import JSX from 'metal-jsx';
 
-import '../Header.soy';
-import '../cards/Card.soy';
-import '../cards/ImageCard.soy';
-import '../cards/TableCard.soy';
+import '../Header';
+import '../cards/Card';
+import '../cards/ImageCard';
+import '../cards/TableCard';
 
 class Dashboard extends Component {
-	created() {
-		this.on('campaignsChanged', this.updateCampaignStatistics_);
-		this.updateCampaignStatistics_();
-	}
-
 	addDots_(number) {
 		var str = number.toString();
 		var finalStr = '';
@@ -28,17 +22,141 @@ class Dashboard extends Component {
 		return finalStr;
 	}
 
-	sum_(name) {
-		return this.campaigns.reduce((prev, curr) => prev + curr[name], 0);
+	render() {
+		return <div class="campaign-manager container-fluid">
+			<div class="campaign-manager-dashboard">
+				<Header currentUrl={this.props.currentUrl} />
+				<div class="row">
+					<div
+						id="campaign-manager-active-card"
+						class="col-md-4 campaign-manager-card-wrapper">
+						<Card children={this.renderActiveCampaigns_()} cssClass="clearfix" />
+					</div>
+					<div
+						id="campaign-manager-amount-card"
+						class="col-md-4 campaign-manager-group campaign-manager-card-wrapper">
+						<Card children={this.renderWinsAndBudget_()} cssClass="clearfix" />
+					</div>
+					<div
+						id="campaign-manager-leads-card"
+						class="col-md-4 campaign-manager-card-wrapper">
+						<Card children={this.renderLeadsAndCustomers_()} cssClass="clearfix" />
+					</div>
+				</div>
+
+				<div class="row row-destinations">
+					<div class="col-md-4 campaign-manager-card-wrapper">
+						<ImageCard
+							count={2894}
+							imageUrl={this.props.baseUrl + 'images/chart.png'}
+							title="Destinations views"
+						/>
+					</div>
+					<div class="col-md-4 campaign-manager-card-wrapper">
+						<TableCard
+							headers={['Name', 'Views', 'CTR']}
+							data={[
+								['Destination name 001', '12k', '7%'],
+								['Destination name 001', '12k', '7%'],
+								['Destination name 001', '12k', '7%'],
+								['Destination name 001', '12k', '7%'],
+								['Destination name 001', '12k', '7%']
+							]}
+							title="Top 5 Destinations"
+						/>
+					</div>
+					<div class="col-md-4 campaign-manager-card-wrapper">
+						<ImageCard
+							count={2894}
+							imageUrl={this.props.baseUrl + 'images/chartWithLabels.png'}
+							title="Destinations conversions"
+						/>
+					</div>
+				</div>
+
+				<div class="row row-promotions">
+					<div class="col-md-4 campaign-manager-card-wrapper">
+						<ImageCard
+							count={2894}
+							imageUrl={this.props.baseUrl + 'images/chart.png'}
+							title="Banner Ads views"
+						/>
+					</div>
+					<div class="col-md-4 campaign-manager-card-wrapper">
+						<TableCard
+							headers={['Name', '# Promotions', '# Reach', 'CTR']}
+							data={[
+								['SMS', '150', '150', '7%'],
+								['Email', '860', '860', '5%'],
+								['Push', '75', '260', '3%']
+							]}
+							title="One to One promotions"
+						/>
+					</div>
+					<div class="col-md-4 campaign-manager-card-wrapper">
+						<TableCard
+							headers={['Channel', '# Post', 'Reach', 'CTR']}
+							data={[
+								['Facebook', '150', '150', '7%'],
+								['Twitter', '150', '150', '7%'],
+								['LinkedIn', '150', '150', '7%']
+							]}
+							title="Social Promotions"
+						/>
+					</div>
+				</div>
+			</div>
+		</div>;
 	}
 
-	updateCampaignStatistics_() {
-		this.totalInfluencedWins = this.addDots_(this.sum_('influencedWins'));
-		this.totalInfluencedCustomers = this.sum_('influencedCustomers');
-		this.totalLeadsCount = this.sum_('leadsCount');
-		this.totalBudget = this.addDots_(this.sum_('budget'));
+	renderActiveCampaigns_() {
+		return <div class="col-md-4">
+			<img src={this.props.baseUrl + 'images/target.png'} height="100">
+		</div>
+		<div class="col-md-8">
+			<div class="highlight big">{this.props.campaigns.length}</div>
+			<div class="campaign-manager-card-label">Active Campaigns</div>
+		</div>;
+	}
+
+	renderLeadsAndCustomers_() {
+		return <div class="col-md-5">
+			<div class="highlight big">{this.sum_('leadsCount')}</div>
+			<p class="campaign-manager-card-label">
+				Total leads
+				<span>(Lead Cost 1.26%)</span>
+			</p>
+		</div>
+		<div class="col-md-2 hidden-sm campaign-manager-card-people">
+			<img src="{$baseUrl}images/people.png">
+		</div>
+		<div class="col-md-5">
+			<div class="highlight big">{this.sum_('influencedCustomers')}</div>
+			<p class="campaign-manager-card-label">Influenced customers</p>
+		</div>;
+	}
+
+	renderWinsAndBudget_() {
+		return <div class="col-md-6">
+			<div class="campaign-manager-amount-value">
+				<span class="highlight">{this.addDots_(this.sum_('influencedWins'))}</span>
+				<span class="light-gray">$</span>
+			</div>
+			<div class="campaign-manager-card-label">Influenced wins</div>
+		</div>
+		<div class="col-md-6">
+			<div class="campaign-manager-amount-value">
+				<span class="highlight">{this.addDots_(this.sum_('budget'))}</span>
+				<span class="light-gray">$</span>
+			</div>
+			<div class="campaign-manager-card-label">Total assigned budget</div>
+		</div>;
+	}
+
+	sum_(name) {
+		return this.props.campaigns.reduce((prev, curr) => prev + curr[name], 0);
 	}
 }
-Soy.register(Dashboard, templates);
+JSX.register(Dashboard);
 
 export default Dashboard;

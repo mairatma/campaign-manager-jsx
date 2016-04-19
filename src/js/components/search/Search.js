@@ -1,14 +1,24 @@
 'use strict';
 
-import templates from './Search.soy';
 import Component from 'metal-component';
-import Soy from 'metal-soy';
+import JSX from 'metal-jsx';
 
 class Search extends Component {
-	handleInput_(event) {
-		this.value = event.delegateTarget.value;
+	render() {
+		return <div class="input-group campaign-manager-search">
+			<input
+				type="text"
+				class="form-control input-lg"
+				placeholder="Search"
+				value={this.props.value ?: ''}
+				data-input={this.props.onInput}
+			/>
+			<div class="input-group-addon input-group-addon-clean">
+				<span class="glyphicon glyphicon-search"></span>
+			</div>
+		</div>;
 	}
 }
-Soy.register(Search, templates);
+JSX.register(Search);
 
 export default Search;
