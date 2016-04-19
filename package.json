@@ -17,21 +17,32 @@
     "metal"
   ],
   "scripts": {
-    "build": "metal build -b bundle.js --globalName CM",
+    "build": "browserify -d -e src/Main.js -g babelify -s Main -o build/bundle.js",
     "server": "http-server",
     "start": "npm run build && npm run server",
-    "watch": "metal watch -b bundle.js --globalName CM"
+    "watch": "watchify -d -e src/Main.js -g babelify -s Main -o build/bundle.js"
+  },
+  "babel": {
+    "plugins": [
+      [
+        "incremental-dom",
+        {
+          "prefix": "IncrementalDOM"
+        }
+      ]
+    ],
+    "presets": ["metal"]
   },
   "dependencies": {
     "bootstrap": "^3.3.6",
+    "metal-jsx": "^1.0.0-rc.3",
     "metal-router": "^0.0.2",
-    "metal-soy": "^1.0.0-rc.5",
     "redux": "^3.4.0",
     "senna": "^1.0.1"
   },
   "devDependencies": {
-    "gulp-watch": "^4.3.5",
-    "http-server": "^0.9.0",
-    "metal-cli": "^1.3.0"
+    "babelify": "^7.2.0",
+    "browserify": "^13.0.0",
+    "http-server": "^0.9.0"
   }
 }
