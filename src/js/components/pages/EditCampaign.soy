@@ -1,0 +1,66 @@
+{namespace EditCampaign}
+
+/**
+ * @param campaigns
+ * @param destinations
+ * @param? editCampaignId
+ * @param sourceUrl
+ * @param tactics
+ */
+{template .render}
+		<div class="campaign-manager-edit-campaign">
+			<div class="container-fluid white-bg campaign-manager">
+				<div class="campaign-manager-page-title">
+					{call BackArrow.render data="all" /}
+					<h1>{isNonnull($editCampaignId) ? 'Edit' : 'New'} Campaign</h1>
+				</div>
+			</div>
+
+			<form class="form-horizontal">
+				{call EditCampaignDetails.render}
+					{param campaigns: $campaigns /}
+					{param editCampaignId: $editCampaignId /}
+				{/call}
+
+				<div class="campaign-manager-edit-campaign-journey container-fluid white-bg campaign-manager session">
+					<h2>Journey</h2>
+					<div class="session-description">
+						<p><b>What's the journey?</b> <em> The journey defines the steps or stages of your campaign. If you don't have stages, just use the single step journey. If you are  using multi-step journeys you'll be able to define goals for each stage and program tactic that depend on information from the previous stage.</em></p>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-md-1 control-label">Journey</label>
+						<div class="col-md-2">
+							<select class="form-control" name="journey">
+								<option value="1">Sales Funnel</option>
+							</select>
+						</div>
+						<div class="col-md-4">
+							<a class="btn-manage-journey">Manage journeys</a>
+						</div>
+					</div>
+				</div>
+
+				{call EditCampaignGoal.render}
+					{param campaigns: $campaigns /}
+					{param editCampaignId: $editCampaignId /}
+				{/call}
+				
+				{call EditCampaignTactics.render}
+					{param destinations: $destinations /}
+					{param selectedTacticIds: isNonnull($editCampaignId) ? $campaigns[$editCampaignId].tacticIds : [] /}
+					{param tactics: $tactics /}
+				{/call}
+
+				<div class="container-fluid campaign-manager white-bg session">
+					<div class="form-group">
+						<div class="col-sm-10">
+							<a href="{$sourceUrl}" class="btn btn-lg btn-success" data-onclick="save">
+								{isNonnull($editCampaignId) ? 'Save' : 'Create'} Campaign
+							</a>
+							<a href="{$sourceUrl}" class="btn btn-lg btn-lighter">Cancel</a>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+{/template}

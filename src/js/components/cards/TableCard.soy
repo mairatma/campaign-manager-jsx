@@ -1,0 +1,34 @@
+{namespace TableCard}
+
+/**
+ * @param headers
+ * @param data
+ * @param title
+ */
+{template .render}
+	<div class="campaign-manager-table-card">
+		{call Card.render}
+			{param children kind="html"}
+				<div class="campaign-manager-card-title">{$title}</div>
+				<table class="table table-clean">
+					<thead>
+						<tr>
+							{foreach $header in $headers}
+								<th class="light-gray {isFirst($header) ? '' : 'text-center'}">{$header}</th>
+							{/foreach}
+						</tr>
+					</thead>
+					<tbody>
+						{foreach $row in $data}
+							<tr>
+								{foreach $cell in $row}
+									<td class="{isFirst($cell) ? '' : 'text-center'}">{$cell}</td>
+								{/foreach}
+							</tr>
+						{/foreach}
+					</tbody>
+				</table>
+			{/param}
+		{/call}
+	</div>
+{/template}

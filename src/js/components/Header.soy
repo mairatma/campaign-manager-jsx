@@ -1,0 +1,40 @@
+{namespace Header}
+
+/**
+ * This renders the main element.
+ * @param? currentUrl
+ * @param? includeTabs
+ * @param? includeAddCampaignButton
+ */
+{template .render}
+	<div class="campaign-manager-header row">
+		<div class="col-md-12">
+			<a
+				href="/create-campaign"
+				class="btn btn-primary campaign-manager-button-new pull-right"
+				data-onclick="startCampaignCreation_">
+				New Campaign
+			</button>
+			{if $includeAddCampaignButton}
+				<h4 class="campaign-manager-title campaign-manager-page-title">Campaign Manager</h4>
+			{/if}
+		</div>
+		{if $includeTabs}
+			<div class="col-md-12">
+				{call Tabs.render}
+					{param tabs: [
+						[
+							'name': 'Dashboard',
+							'href': '/dashboard'
+						],
+						[
+							'name': 'Manage Campaigns',
+							'href': '/manage-campaigns'
+						]
+					] /}
+					{param selectedIndex: $currentUrl == '/manage-campaigns' ? 1 : 0 /}
+				{/call}
+			</div>
+		{/if}
+	</div>
+{/template}

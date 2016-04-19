@@ -1,0 +1,37 @@
+{
+  "name": "campaign-manager",
+  "version": "0.0.0",
+  "description": "A campaign manager app built using Metal.js",
+  "license": "BSD",
+  "repository": "mairatma/campaign-manager",
+  "engines": {
+    "node": ">=0.12.0",
+    "npm": ">=3.0.0"
+  },
+  "main": "src/App.js",
+  "files": [
+    "src",
+    "build"
+  ],
+  "keywords": [
+    "metal"
+  ],
+  "scripts": {
+    "build": "metal build -b bundle.js --globalName CM",
+    "server": "http-server",
+    "start": "npm run build && npm run server",
+    "watch": "metal watch -b bundle.js --globalName CM"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "metal-router": "^0.0.2",
+    "metal-soy": "^1.0.0-rc.5",
+    "redux": "^3.4.0",
+    "senna": "^1.0.1"
+  },
+  "devDependencies": {
+    "gulp-watch": "^4.3.5",
+    "http-server": "^0.9.0",
+    "metal-cli": "^1.3.0"
+  }
+}

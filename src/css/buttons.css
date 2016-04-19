@@ -1,0 +1,39 @@
+.btn {
+	border: none;
+	border-radius: 2px;
+	text-transform: uppercase;
+	transition: background-color .5s, box-shadow .5s;
+	padding: .9em 1.8em;
+}
+
+.btn:not(.btn-lighter):hover {
+	box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
+}
+
+.btn-lighter,
+.btn-lighter:hover,
+.btn-lighter:focus {
+	color: #646c8b;
+}
+
+.btn-default,
+.btn-default:hover,
+.btn-default:focus {
+	border: 1px solid #d0d2e1;
+	border-radius: 5px;
+	background-color: #f7f7fa;
+	color: #646c8b;
+}
+
+.btn-lg {
+	padding: .9em 2em;
+}
+
+.btn-primary {
+	background-color: #565c7b;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+	background-color: #5a659a;
+}

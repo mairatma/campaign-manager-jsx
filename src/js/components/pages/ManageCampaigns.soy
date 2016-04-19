@@ -1,0 +1,50 @@
+{namespace ManageCampaigns}
+
+/**
+ * @param? currentUrl
+ * @param? filteredCampaigns
+ * @param? search
+ * @param? sort
+ */
+{template .render}
+	<div class="campaign-manager container-fluid">
+		<div class="campaign-manager-manage-campaigns">
+			{call Header.render}
+				{param currentUrl: $currentUrl /}
+				{param includeAddCampaignButton: true /}
+				{param includeTabs: true /}
+			{/call}
+
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+			    {call Search.render}
+						{param events: ['valueChanged': $search] /}
+					{/call}
+				</div>
+			</div>
+
+			{call Card.render}
+				{param children kind="html"}
+					<div class="form-inline select pull-right">
+						<label>View Mode:</label>
+						<select class="form-control">
+							<option value="name">List</option>
+						</select>
+					</div>
+					<div class="form-inline select">
+						<label>Order by:</label>
+						<select class="form-control" data-onchange="{$sort}">
+						  <option value="name">Name</option>
+						  <option value="date">Scheduled Date</option>
+						</select>
+					</div>
+					{call CampaignTable.render}
+						{param campaigns: $filteredCampaigns ? $filteredCampaigns : [] /}
+						{param currentUrl: $currentUrl /}
+					{/call}
+				{/param}
+			{/call}
+		</div>
+	</div>
+{/template}

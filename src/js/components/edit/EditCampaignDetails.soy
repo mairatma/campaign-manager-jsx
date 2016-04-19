@@ -1,0 +1,98 @@
+{namespace EditCampaignDetails}
+
+/**
+ * @param campaigns
+ * @param? editCampaignId
+ */
+{template .render}
+	{let $campaign: isNonnull($editCampaignId) ? $campaigns[$editCampaignId] : [] /}
+	<div class="campaign-manager-edit-campaign-details container-fluid white-bg campaign-manager session session-merged-next">
+		<h2>Details</h2>
+		<div class="form-group">
+			<label for="" class="col-md-1 control-label">Name:</label>
+			<div class="col-md-4">
+				<input type="text" class="form-control" name="name" value="{$campaign.name ?: ''}">
+			</div>
+
+			<br class="hidden-md hidden-lg">
+
+			<label class="col-md-1 col-md-offset-2 control-label">Budget:</label>
+			<div class="col-md-2">
+				<input type="text" class="form-control" name="budget" value="{$campaign.budget ?: ''}">
+			</div>
+			<div class="col-md-2">
+				<select class="form-control">
+					<option>($) Dollars</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="" class="col-md-1 control-label">Description:</label>
+			<div class="col-md-11">
+				<textarea class="form-control" rows="8" cols="40" name="description">
+					{$campaign.description ?: ''}
+				</textarea>
+			</div>
+		</div>
+
+		<div class="form-group">
+			{call .date}
+				{param label: 'Starts on:' /}
+				{param name: 'startDate' /}
+				{param obj: $campaign.startDate ?: null /}
+			{/call}
+
+			<br class="hidden-md hidden-lg">
+			<div class="col-md-2"></div>
+
+			{call .date}
+				{param label: 'Ends:' /}
+				{param name: 'endDate' /}
+				{param obj: $campaign.endDate ?: null /}
+			{/call}
+		</div>
+	</div>
+{/template}
+
+/**
+ * @param? obj
+ */
+{template .date}
+	{@param label: string}
+	{@param name: string}
+	<label for="" class="col-md-1 control-label">{$label}</label>
+	<div class="col-md-2">
+		<input
+			type="date"
+			class="form-control"
+			name="{$name}"
+			value="{$obj ? $obj.month + '/' + $obj.date + '/' + $obj.year : ''}">
+	</div>
+	<div class="col-md-1">
+		<select class="form-control" name="{$name}Time">
+			{for $i in range(24)}
+				<option value="{$i}"
+					{call .selectedOption}
+						{param value: $obj ? $obj.hours : '' /}
+						{param current: $i /}
+					{/call}>
+					{$i > 12 ? $i - 12 : $i}:00 {$i >= 12 ? 'PM' : 'AM'}
+				</option>
+			{/for}
+		</select>
+	</div>
+	<div class="col-md-1">
+		<select class="form-control">
+			<option>GMT</option>
+		</select>
+	</div>
+{/template}
+
+/**
+ * @param value
+ * @param current
+ */
+{template .selectedOption kind="attributes"}
+	{if $value == $current}selected{/if}
+{/template}

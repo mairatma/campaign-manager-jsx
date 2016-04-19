@@ -1,0 +1,17 @@
+{namespace Tabs}
+
+/**
+ * @param tabs
+ * @param selectedIndex
+ */
+{template .render}
+	<ul class="campaign-manager-tabs nav nav-tabs">
+		{foreach $tab in $tabs}
+			<li class="{$selectedIndex == index($tab) ? 'active' : ''}">
+				<a href="{$tab.href}">
+					{$tab.name}
+				</a>
+			</li>
+		{/foreach}
+	</ul>
+{/template}

@@ -1,0 +1,98 @@
+.campaign-manager-card {
+	background-color: #fff;
+	border: 1px solid #ebecf0;
+	border-radius: 8px;
+	box-shadow: 0 2px 5px #ebecf0;
+	color: #646c8b;
+	padding: 25px;
+}
+
+.campaign-manager-card .highlight.big {
+	font-size: 3em;
+}
+
+.campaign-manager-card-title {
+	margin-bottom: 30px;
+	font-size: 1.6em;
+}
+
+.campaign-manager-card .campaign-manager-card-label {
+	font-size: 1.2em;
+	line-height: 1.2em;
+}
+
+.campaign-manager-card-label span {
+	display: inline-block;
+	font-size: 12px;
+	color: #d2d3dc;
+}
+
+.campaign-manager-card-wrapper {
+	margin: 0 0 50px 0;
+}
+
+.campaign-manager-card-wrapper:nth-child(3n + 0) .campaign-manager-card {
+	margin-right: 0;
+}
+
+.campaign-manager-card-people {
+	padding: 0;
+}
+
+.campaign-manager-card-people img,
+.campaign-manager-image-card img {
+	width: 100%;
+}
+
+.campaign-manager-table-card .campaign-manager-card {
+	overflow: auto;
+}
+
+.campaign-manager-image-card .campaign-manager-card,
+.campaign-manager-table-card .campaign-manager-card {
+	text-align: left;
+}
+
+.campaign-manager-image-card .count {
+	padding-left: 15px;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+	background-color: #fafafc;
+}
+
+.table-box {
+	border: 2px solid #e9e9f0;
+	overflow: hidden;
+	border-collapse: inherit;
+	border-radius: 5px;
+}
+
+.table-box > thead > tr > th {
+	border-bottom: 2px solid #cecfd8;
+	color: #afb3c1;
+	text-transform: uppercase;
+	font-size: 11px;
+	padding: 28px 22px;
+}
+
+.table-box > tbody > tr > td {
+	border-top: none;
+	padding: 22px;
+}
+
+.table.table-clean thead th {
+	border: none;
+	font-size: 18px;
+	font-weight: normal;
+}
+
+.table.table-clean tbody td {
+	border: none;
+}
+
+@media (max-width: 1220px) {
+	body {
+		font-size: 13px;
+	}
+}

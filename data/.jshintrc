@@ -1,0 +1,6 @@
+{
+  "globals": {
+    "CM": true
+  },
+  "extends": "../.jshintrc"
+}

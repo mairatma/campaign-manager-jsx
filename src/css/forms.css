@@ -1,0 +1,22 @@
+.input-group-addon-clean {
+	background-color: #fff;
+	border-color: #eee;
+	border-left: 0;
+	margin-left: -1px;
+	position: relative;
+}
+
+.input-group .form-control:first-child {
+	border-right: 0;
+}
+
+.input-lg {
+	font-weight: 100;
+}
+
+.form-control {
+	border-color: #e2e2e2;
+	box-shadow: none;
+	border-radius: 3px;
+	color: inherit;
+}

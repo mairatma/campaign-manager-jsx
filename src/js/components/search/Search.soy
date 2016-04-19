@@ -1,0 +1,16 @@
+{namespace Search}
+
+/**
+ * @param? value
+ */
+{template .render}
+	<div class="input-group campaign-manager-search">
+		<input
+			type="text"
+			class="form-control input-lg"
+			placeholder="Search"
+			value="{$value ?: ''}"
+			data-oninput="handleInput_">
+		<div class="input-group-addon input-group-addon-clean"><span class="glyphicon glyphicon-search"></span></div>
+	</div>
+{/template}

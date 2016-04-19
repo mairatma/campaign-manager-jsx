@@ -1,0 +1,28 @@
+.campaign-manager-tabs {
+	margin-bottom: 20px;
+	text-align: center;
+	border-color: #e0e1e6;
+}
+
+.campaign-manager-tabs li {
+	display: inline-block;
+	float: none;
+}
+
+.campaign-manager-tabs li a {
+	color: #646c8b;
+	opacity: .5;
+	font-size: 1.3em 
+}
+
+.campaign-manager-tabs li.active > a,
+.campaign-manager-tabs li.active:hover > a,
+.campaign-manager-tabs li.active > a:focus {
+	background-color: transparent;
+	border-width: 0;
+	border-bottom-color: #646c8b;
+	border-bottom-style: solid;
+	border-bottom-width: 3px;
+	color: #646c8b;
+	opacity: 1;
+}

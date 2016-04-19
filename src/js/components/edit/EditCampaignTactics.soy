@@ -1,0 +1,30 @@
+{namespace EditCampaignTactics}
+
+/**
+ * @param destinations
+ * @param selectedTacticIds
+ * @param tactics
+ */
+{template .render}
+	<div class="campaign-manager-edit-campaign-tactics container-fluid campaign-manager white-bg session session-merged-next">
+		<h2>Tactics</h2>
+		<div class="session-description">
+			<p><b>What are tactics?</b> <em>Tactics are the different ways to achive your marketing goals. They usually include publishing destinations like landing pages or blog, defining broadcast prmotion on social media or via personalized banner ads in your webs and also one to one promotions like emails, SMS or Push notifications to the right audience.</em></p>
+		</div>
+
+		{call TacticsTable.render}
+			{param destinations: $destinations /}
+			{param selectedTacticIds: $selectedTacticIds /}
+			{param tactics: $tactics /}
+		{/call}
+		<input type="hidden" value="{call .join}{param ids: $selectedTacticIds /}{/call}" name="tacticIds">
+	</div>
+{/template}
+
+{template .join kind="text"}
+	{@param ids: list<string|int>}
+	{foreach $id in $ids}
+		{if index($id) > 0},{/if}
+		{$id}
+	{/foreach}
+{/template}
