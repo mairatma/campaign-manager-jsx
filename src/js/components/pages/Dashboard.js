@@ -25,7 +25,7 @@ class Dashboard extends Component {
 	render() {
 		return <div class="campaign-manager container-fluid">
 			<div class="campaign-manager-dashboard">
-				<Header currentUrl={this.props.currentUrl} />
+				<Header currentUrl={this.props.currentUrl} basePath={this.props.basePath} />
 				<div class="row">
 					<div
 						id="campaign-manager-active-card"
@@ -48,7 +48,7 @@ class Dashboard extends Component {
 					<div class="col-md-4 campaign-manager-card-wrapper">
 						<ImageCard
 							count={2894}
-							imageUrl={this.props.baseUrl + 'images/chart.png'}
+							imageUrl={this.props.baseResourceUrl + 'images/chart.png'}
 							title="Destinations views"
 						/>
 					</div>
@@ -68,7 +68,7 @@ class Dashboard extends Component {
 					<div class="col-md-4 campaign-manager-card-wrapper">
 						<ImageCard
 							count={2894}
-							imageUrl={this.props.baseUrl + 'images/chartWithLabels.png'}
+							imageUrl={this.props.baseResourceUrl + 'images/chartWithLabels.png'}
 							title="Destinations conversions"
 						/>
 					</div>
@@ -78,7 +78,7 @@ class Dashboard extends Component {
 					<div class="col-md-4 campaign-manager-card-wrapper">
 						<ImageCard
 							count={2894}
-							imageUrl={this.props.baseUrl + 'images/chart.png'}
+							imageUrl={this.props.baseResourceUrl + 'images/chart.png'}
 							title="Banner Ads views"
 						/>
 					</div>
@@ -112,7 +112,7 @@ class Dashboard extends Component {
 	renderActiveCampaigns_() {
 		return <div>
 			<div class="col-md-4">
-				<img src={this.props.baseUrl + 'images/target.png'} height="100" />
+				<img src={this.props.baseResourceUrl + 'images/target.png'} height="100" />
 			</div>
 			<div class="col-md-8">
 				<div class="highlight big">{this.props.campaigns.length}</div>
@@ -131,7 +131,7 @@ class Dashboard extends Component {
 				</p>
 			</div>
 			<div class="col-md-2 hidden-sm campaign-manager-card-people">
-				<img src={this.props.baseUrl + 'images/people.png'} />
+				<img src={this.props.baseResourceUrl + 'images/people.png'} />
 			</div>
 			<div class="col-md-5">
 				<div class="highlight big">{this.sum_('influencedCustomers')}</div>

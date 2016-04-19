@@ -5,7 +5,11 @@ import campaigns from './campaigns';
 import editCampaignId from './editCampaignId';
 import sourceUrl from './sourceUrl';
 
-function baseUrl(state) {
+function basePath(state) {
+	return state || '';
+}
+
+function baseResourceUrl(state) {
 	return state || '/';
 }
 
@@ -30,7 +34,8 @@ function tactics(state) {
 }
 
 var combined = Redux.combineReducers({
-	baseUrl,
+	basePath,
+	baseResourceUrl,
 	campaigns,
 	editCampaignId,
 	destinations,

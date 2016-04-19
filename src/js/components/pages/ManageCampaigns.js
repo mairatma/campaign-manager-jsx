@@ -29,7 +29,7 @@ class ManageCampaigns extends Component {
 	render() {
 		return <div class="campaign-manager container-fluid">
 			<div class="campaign-manager-manage-campaigns">
-				<Header currentUrl={this.props.currentUrl} />
+				<Header currentUrl={this.props.currentUrl} basePath={this.props.basePath} />
 				<div class="row">
 					<div class="col-md-4"></div>
 					<div class="col-md-4">

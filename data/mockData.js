@@ -1,7 +1,8 @@
 'use strict';
 
 window.CMData = {
-	baseUrl: 'src/',
+	basePath: '',
+	baseResourceUrl: 'src/',
 	campaigns: [
 		{
 			id: 0,

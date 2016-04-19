@@ -11,18 +11,18 @@ class Header extends Component {
 		var tabs = [
 			{
 				name: 'Dashboard',
-				href: '/dashboard'
+				href: this.props.basePath + '/dashboard'
 			},
 			{
 				name: 'Manage Campaigns',
-				href: '/manage-campaigns'
+				href: this.props.basePath + '/manage-campaigns'
 			}
 		];
 
 		return <div class="campaign-manager-header row">
 			<div class="col-md-12">
 				<a
-					href="/create-campaign"
+					href={this.props.basePath + '/create-campaign'}
 					class="btn btn-primary campaign-manager-button-new pull-right"
 					data-onclick={this.startCampaignCreation_.bind(this)}>
 					New Campaign
@@ -32,7 +32,7 @@ class Header extends Component {
 			<div class="col-md-12">
 				<Tabs
 					tabs={tabs}
-					selectedIndex={this.props.currentUrl == '/manage-campaigns' ? 1 : 0}
+					selectedIndex={this.props.currentUrl == (this.props.basePath + '/manage-campaigns') ? 1 : 0}
 				/>
 			</div>
 		</div>;
