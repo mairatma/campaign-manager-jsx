@@ -57,6 +57,7 @@ class ManageCampaigns extends Component {
 				</select>
 			</div>
 			<CampaignTable
+				basePath={this.props.basePath}
 				campaigns={this.filterCampaigns_()}
 				currentUrl={this.props.currentUrl}
 			/>

@@ -55,7 +55,9 @@ class CampaignTable extends Component {
 					<span>Lead Generation - {campaign.goal.generation.count} new contacts in 2 weeks</span>
 				</td>
 				<td>
-					<a href={'/edit-campaign/' + campaign.id} data-onclick={this.edit_.bind(this)}>
+					<a
+						href={this.props.basePath + '/edit-campaign/' + campaign.id}
+						data-onclick={this.edit_.bind(this)}>
 						<span class="glyphicon glyphicon-cog table-action-icon table-action-edit"></span>
 					</a>
 				</td>

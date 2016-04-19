@@ -42,7 +42,10 @@ class EditCampaign extends Component {
 		return <div class="campaign-manager-edit-campaign">
 			<div class="container-fluid white-bg campaign-manager">
 				<div class="campaign-manager-page-title">
-					<BackArrow sourceUrl={this.props.sourceUrl} />
+					<BackArrow
+						basePath={this.props.basePath}
+						sourceUrl={this.props.sourceUrl}
+					/>
 					<h1>
 						{editMode ? 'Edit' : 'New'} Campaign
 					</h1>
@@ -96,12 +99,16 @@ class EditCampaign extends Component {
 					<div class="form-group">
 						<div class="col-sm-10">
 							<a
-								href={this.props.sourceUrl}
+								href={this.props.basePath + this.props.sourceUrl}
 								class="btn btn-lg btn-success"
 								data-onclick={this.save_.bind(this)}>
 								{editMode ? 'Save' : 'Create'} Campaign
 							</a>
-							<a href={this.props.sourceUrl} class="btn btn-lg btn-lighter">Cancel</a>
+							<a
+								href={this.props.basePath + this.props.sourceUrl}
+								class="btn btn-lg btn-lighter">
+								Cancel
+							</a>
 						</div>
 					</div>
 				</div>

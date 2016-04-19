@@ -32,7 +32,7 @@ class Header extends Component {
 			<div class="col-md-12">
 				<Tabs
 					tabs={tabs}
-					selectedIndex={this.props.currentUrl == (this.props.basePath + '/manage-campaigns') ? 1 : 0}
+					selectedIndex={this.props.currentUrl == '/manage-campaigns' ? 1 : 0}
 				/>
 			</div>
 		</div>;
