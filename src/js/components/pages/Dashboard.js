@@ -30,17 +30,17 @@ class Dashboard extends Component {
 					<div
 						id="campaign-manager-active-card"
 						class="col-md-4 campaign-manager-card-wrapper">
-						<Card children={this.renderActiveCampaigns_()} cssClass="clearfix" />
+						<Card children={this.renderActiveCampaigns_.bind(this)} cssClass="clearfix" />
 					</div>
 					<div
 						id="campaign-manager-amount-card"
 						class="col-md-4 campaign-manager-group campaign-manager-card-wrapper">
-						<Card children={this.renderWinsAndBudget_()} cssClass="clearfix" />
+						<Card children={this.renderWinsAndBudget_.bind(this)} cssClass="clearfix" />
 					</div>
 					<div
 						id="campaign-manager-leads-card"
 						class="col-md-4 campaign-manager-card-wrapper">
-						<Card children={this.renderLeadsAndCustomers_()} cssClass="clearfix" />
+						<Card children={this.renderLeadsAndCustomers_.bind(this)} cssClass="clearfix" />
 					</div>
 				</div>
 
@@ -110,46 +110,52 @@ class Dashboard extends Component {
 	}
 
 	renderActiveCampaigns_() {
-		return <div class="col-md-4">
-			<img src={this.props.baseUrl + 'images/target.png'} height="100">
-		</div>
-		<div class="col-md-8">
-			<div class="highlight big">{this.props.campaigns.length}</div>
-			<div class="campaign-manager-card-label">Active Campaigns</div>
+		return <div>
+			<div class="col-md-4">
+				<img src={this.props.baseUrl + 'images/target.png'} height="100" />
+			</div>
+			<div class="col-md-8">
+				<div class="highlight big">{this.props.campaigns.length}</div>
+				<div class="campaign-manager-card-label">Active Campaigns</div>
+			</div>
 		</div>;
 	}
 
 	renderLeadsAndCustomers_() {
-		return <div class="col-md-5">
-			<div class="highlight big">{this.sum_('leadsCount')}</div>
-			<p class="campaign-manager-card-label">
-				Total leads
-				<span>(Lead Cost 1.26%)</span>
-			</p>
-		</div>
-		<div class="col-md-2 hidden-sm campaign-manager-card-people">
-			<img src="{$baseUrl}images/people.png">
-		</div>
-		<div class="col-md-5">
-			<div class="highlight big">{this.sum_('influencedCustomers')}</div>
-			<p class="campaign-manager-card-label">Influenced customers</p>
+		return <div>
+			<div class="col-md-5">
+				<div class="highlight big">{this.sum_('leadsCount')}</div>
+				<p class="campaign-manager-card-label">
+					Total leads
+					<span>(Lead Cost 1.26%)</span>
+				</p>
+			</div>
+			<div class="col-md-2 hidden-sm campaign-manager-card-people">
+				<img src={this.props.baseUrl + 'images/people.png'} />
+			</div>
+			<div class="col-md-5">
+				<div class="highlight big">{this.sum_('influencedCustomers')}</div>
+				<p class="campaign-manager-card-label">Influenced customers</p>
+			</div>
 		</div>;
 	}
 
 	renderWinsAndBudget_() {
-		return <div class="col-md-6">
-			<div class="campaign-manager-amount-value">
-				<span class="highlight">{this.addDots_(this.sum_('influencedWins'))}</span>
-				<span class="light-gray">$</span>
+		return <div>
+			<div class="col-md-6">
+				<div class="campaign-manager-amount-value">
+					<span class="highlight">{this.addDots_(this.sum_('influencedWins'))}</span>
+					<span class="light-gray">$</span>
+				</div>
+				<div class="campaign-manager-card-label">Influenced wins</div>
 			</div>
-			<div class="campaign-manager-card-label">Influenced wins</div>
-		</div>
-		<div class="col-md-6">
-			<div class="campaign-manager-amount-value">
-				<span class="highlight">{this.addDots_(this.sum_('budget'))}</span>
-				<span class="light-gray">$</span>
+			<div class="col-md-6">
+				<div class="campaign-manager-amount-value">
+					<span class="highlight">{this.addDots_(this.sum_('budget'))}</span>
+					<span class="light-gray">$</span>
+				</div>
+				<div class="campaign-manager-card-label">Total assigned budget</div>
 			</div>
-			<div class="campaign-manager-card-label">Total assigned budget</div>
 		</div>;
 	}
 

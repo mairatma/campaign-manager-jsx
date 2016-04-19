@@ -1,9 +1,14 @@
 'use strict';
 
+import core from 'metal';
 import Component from 'metal-component';
 import JSX from 'metal-jsx';
 
 class EditCampaignDetails extends Component {
+	addLeading0(num) {
+		return num < 10 ? ('0' + num) : num;
+	}
+
 	render() {
 		var editMode = core.isDefAndNotNull(this.props.editCampaignId);
 		var campaign = editMode ? this.props.campaigns[this.props.editCampaignId] : {};
@@ -13,14 +18,12 @@ class EditCampaignDetails extends Component {
 			<div class="form-group">
 				<label for="" class="col-md-1 control-label">Name:</label>
 				<div class="col-md-4">
-					<input type="text" class="form-control" name="name" value={campaign.name || ''}>
+					<input type="text" class="form-control" name="name" value={campaign.name || ''} />
 				</div>
-
-				<br class="hidden-md hidden-lg">
-
+				<br class="hidden-md hidden-lg" />
 				<label class="col-md-1 col-md-offset-2 control-label">Budget:</label>
 				<div class="col-md-2">
-					<input type="text" class="form-control" name="budget" value={campaign.budget || ''}>
+					<input type="text" class="form-control" name="budget" value={campaign.budget || ''} />
 				</div>
 				<div class="col-md-2">
 					<select class="form-control">
@@ -40,7 +43,7 @@ class EditCampaignDetails extends Component {
 
 			<div class="form-group">
 				{this.renderDateFields_('Starts on:', 'startDate', campaign.startDate)}
-				<br class="hidden-md hidden-lg">
+				<br class="hidden-md hidden-lg" />
 				<div class="col-md-2"></div>
 				{this.renderDateFields_('Ends:', 'endDate', campaign.endDate)}
 			</div>
@@ -51,12 +54,13 @@ class EditCampaignDetails extends Component {
 		var timeOptions = [];
 		for (var i = 0; i < 24; i++) {
 			timeOptions.push(
-				<option value={i} {date && date.hours == i ? 'selected' : ''}>
+				<option value={i} selected={(date && date.hours === i) || undefined}>
 					{i > 12 ? i - 12 : i}:00 {i >= 12 ? 'PM' : 'AM'}
 				</option>
 			);
 		}
 
+		console.log('tried', inputName, date ? date.year + '-' + date.month + '-' + date.date : '');
 		return <div>
 			<label for="" class="col-md-1 control-label">{label}</label>
 			<div class="col-md-2">
@@ -64,7 +68,8 @@ class EditCampaignDetails extends Component {
 					type="date"
 					class="form-control"
 					name={inputName}
-					value={date ? date.month + '/' + date.date + '/' + date.year : ''}>
+					value={date ? date.year + '-' + this.addLeading0(date.month) + '-' + this.addLeading0(date.date) : ''}
+				/>
 			</div>
 			<div class="col-md-1">
 				<select class="form-control" name={inputName + 'Time'}>{timeOptions}</select>

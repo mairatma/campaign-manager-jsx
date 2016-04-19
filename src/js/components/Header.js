@@ -24,9 +24,9 @@ class Header extends Component {
 				<a
 					href="/create-campaign"
 					class="btn btn-primary campaign-manager-button-new pull-right"
-					data-onclick="startCampaignCreation_">
+					data-onclick={this.startCampaignCreation_.bind(this)}>
 					New Campaign
-				</button>
+				</a>
 				<h4 class="campaign-manager-title campaign-manager-page-title">Campaign Manager</h4>
 			</div>
 			<div class="col-md-12">
@@ -39,7 +39,7 @@ class Header extends Component {
 	}
 
 	startCampaignCreation_() {
-		store.dispatch(Actions.startCampaignCreation(this.currentUrl));
+		store.dispatch(Actions.startCampaignCreation(this.props.currentUrl));
 	}
 }
 JSX.register(Header);

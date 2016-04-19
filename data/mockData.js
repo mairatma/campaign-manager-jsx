@@ -1,6 +1,6 @@
 'use strict';
 
-var data = {
+window.CMData = {
 	baseUrl: 'src/',
 	campaigns: [
 		{
@@ -213,5 +213,3 @@ var data = {
 		}
 	]
 };
-
-CM.store.dispatch(CM.Actions.updateState(data));

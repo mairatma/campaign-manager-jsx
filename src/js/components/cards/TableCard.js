@@ -8,7 +8,7 @@ import './Card';
 class TableCard extends Component {
 	render() {
 		return <div class="campaign-manager-table-card">
-			<Card children={this.renderContent_} />
+			<Card children={this.renderContent_.bind(this)} />
 		</div>;
 	}
 

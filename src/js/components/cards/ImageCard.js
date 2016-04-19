@@ -8,7 +8,7 @@ import './Card';
 class ImageCard extends Component {
 	render() {
 		return <div class="campaign-manager-image-card">
-			<Card children={this.renderContent_} />
+			<Card children={this.renderContent_.bind(this)} />
 		</div>;
 	}
 
@@ -19,7 +19,7 @@ class ImageCard extends Component {
 				<span class="highlight count">{this.props.count}</span>
 			</div>
 			<div>
-				<img src={this.props.imageUrl}>
+				<img src={this.props.imageUrl} />
 			</div>
 		</div>;
 	}

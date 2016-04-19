@@ -39,7 +39,7 @@ class CampaignTable extends Component {
 	}
 
 	renderDate_(date) {
-		return {MONTHS[date.month - 1]} {date.date}, {date.year};
+		return <span>{MONTHS[date.month - 1] + ' ' + date.date + ', ' + date.year}</span>;
 	}
 
 	renderRows_() {

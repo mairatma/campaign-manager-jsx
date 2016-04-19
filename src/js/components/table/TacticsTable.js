@@ -32,7 +32,7 @@ class TacticsTable extends Component {
 
 	renderRows_() {
 		return this.selectedTacticIds.map((id, index) => {
-			<tr data-row={index}>
+			return <tr data-row={index}>
 				<td>
 					<span>
 						{this.props.destinations[this.props.tactics[id].destinationId].name}
@@ -41,17 +41,17 @@ class TacticsTable extends Component {
 				<td><span>{this.props.tactics[id].name}</span></td>
 				<td>
 					<span
-						class={this.props.tactics[id].oneToOnePromos.length) > 0 ? 'glyphicon glyphicon-ok' : ''}>
+						class={(this.props.tactics[id].oneToOnePromos.length > 0) ? 'glyphicon glyphicon-ok' : ''}>
 					</span>
 				</td>
 				<td>
 					<span
-						class={this.props.tactics[id].oneToOnePromos.length) > 0 ? 'glyphicon glyphicon-ok' : ''}>
+						class={(this.props.tactics[id].oneToOnePromos.length > 0) ? 'glyphicon glyphicon-ok' : ''}>
 					</span>
 				</td>
 				<td>
 					<span
-						class={this.props.tactics[id].promotionalAds.length) > 0 ? 'glyphicon glyphicon-ok' : ''}>
+						class={(this.props.tactics[id].promotionalAds.length > 0) ? 'glyphicon glyphicon-ok' : ''}>
 					</span>
 				</td>
 				<td>

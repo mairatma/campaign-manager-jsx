@@ -6,8 +6,10 @@ import Actions from '../../actions/Actions';
 import Component from 'metal-component';
 import JSX from 'metal-jsx';
 
+import '../BackArrow';
 import '../edit/EditCampaignDetails';
 import '../edit/EditCampaignGoal';
+import '../edit/EditCampaignTactics';
 
 class EditCampaign extends Component {
 	buildDate_(dateStr, time) {

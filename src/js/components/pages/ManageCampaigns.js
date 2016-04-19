@@ -1,5 +1,6 @@
 'use strict';
 
+import core from 'metal';
 import Component from 'metal-component';
 import JSX from 'metal-jsx';
 
@@ -35,7 +36,7 @@ class ManageCampaigns extends Component {
 						<Search onInput={this.search_.bind(this)} />
 					</div>
 				</div>
-				<Card children={this.renderCardContent_()} />
+				<Card children={this.renderCardContent_.bind(this)} />
 			</div>
 		</div>;
 	}
@@ -77,6 +78,9 @@ class ManageCampaigns extends Component {
 JSX.register(ManageCampaigns);
 
 ManageCampaigns.STATE = {
+	campaigns: {
+		validator: Array.isArray
+	},
 	searchBy: {
 		validator: core.isString
 	},

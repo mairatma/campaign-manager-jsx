@@ -1,5 +1,6 @@
 'use strict';
 
+import core from 'metal';
 import Component from 'metal-component';
 import JSX from 'metal-jsx';
 
@@ -25,7 +26,8 @@ class EditCampaignGoal extends Component {
 							type="text"
 							class="form-control"
 							name="generation.count"
-							value={campaign.goal ? campaign.goal.generation.count : 0}>
+							value={campaign.goal ? campaign.goal.generation.count : 0}
+						/>
 			    </div>
 
 			    <label for="" class="col-md-2 control-label"><div class="text-right">new contacts in: </div></label>

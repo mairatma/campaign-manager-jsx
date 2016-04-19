@@ -1,5 +1,6 @@
 'use strict';
 
+import core from 'metal';
 import Component from 'metal-component';
 import JSX from 'metal-jsx';
 
@@ -30,7 +31,11 @@ class EditCampaignTactics extends Component {
 				selectedTacticIds={this.props.selectedTacticIds}
 				tactics={this.props.tactics}
 			/>
-			<input type="hidden" value={this.props.selectedTacticIds.join(',')} name="tacticIds">
+			<input
+				type="hidden"
+				value={this.props.selectedTacticIds.join(',')}
+				name="tacticIds"
+			/>
 		</div>;
 	}
 }

@@ -10,8 +10,8 @@ class Search extends Component {
 				type="text"
 				class="form-control input-lg"
 				placeholder="Search"
-				value={this.props.value ?: ''}
-				data-input={this.props.onInput}
+				value={this.props.value || ''}
+				data-oninput={this.props.onInput}
 			/>
 			<div class="input-group-addon input-group-addon-clean">
 				<span class="glyphicon glyphicon-search"></span>
