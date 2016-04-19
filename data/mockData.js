@@ -1,7 +1,7 @@
 'use strict';
 
 window.CMData = {
-	basePath: '',
+	basePath: '/campaign-manager-jsx',
 	baseResourceUrl: 'src/',
 	campaigns: [
 		{
