@@ -1,10 +1,9 @@
 'use strict';
 
 import core from 'metal';
-import Component from 'metal-component';
-import JSX from 'metal-jsx';
+import JSXComponent from 'metal-jsx';
 
-class Card extends Component {
+class Card extends JSXComponent {
 	render() {
 		return <div class={'campaign-manager-card ' + (this.props.cssClass || '')}>
 			<div class="campaign-manager-card-body clearfix">
@@ -13,6 +12,5 @@ class Card extends Component {
 		</div>;
 	}
 }
-JSX.register(Card);
 
 export default Card;

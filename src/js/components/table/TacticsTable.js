@@ -1,10 +1,9 @@
 'use strict';
 
 import dom from 'metal-dom';
-import Component from 'metal-component';
-import JSX from 'metal-jsx';
+import JSXComponent from 'metal-jsx';
 
-class TacticsTable extends Component {
+class TacticsTable extends JSXComponent {
 	remove_() {
 		var row = parseInt(dom.parent(event.target, 'tr').getAttribute('data-row'), 10);
 		var tacticIds = this.selectedTacticIds.concat();
@@ -64,7 +63,6 @@ class TacticsTable extends Component {
 		});
 	}
 }
-JSX.register(TacticsTable);
 
 TacticsTable.STATE = {
 	selectedTacticIds: {

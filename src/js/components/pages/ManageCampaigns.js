@@ -1,15 +1,13 @@
 'use strict';
 
 import core from 'metal';
-import Component from 'metal-component';
-import JSX from 'metal-jsx';
+import CampaignTable from '../table/CampaignTable';
+import Card from '../cards/Card';
+import Header from '../Header';
+import JSXComponent from 'metal-jsx';
+import Search from '../search/Search';
 
-import '../cards/Card';
-import '../Header';
-import '../search/Search';
-import '../table/CampaignTable';
-
-class ManageCampaigns extends Component {
+class ManageCampaigns extends JSXComponent {
 	filterCampaigns_() {
 		return this.campaigns
 			.filter(campaign => {
@@ -76,7 +74,6 @@ class ManageCampaigns extends Component {
 		return new Date(obj.year, obj.month, obj.date, obj.hours, obj.minutes);
 	}
 }
-JSX.register(ManageCampaigns);
 
 ManageCampaigns.STATE = {
 	campaigns: {

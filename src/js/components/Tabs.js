@@ -1,9 +1,8 @@
 'use strict';
 
-import Component from 'metal-component';
-import JSX from 'metal-jsx';
+import JSXComponent from 'metal-jsx';
 
-class Tabs extends Component {
+class Tabs extends JSXComponent {
 	render() {
 		var items = this.props.tabs.map((tab, index) => {
 			return <li class={this.props.selectedIndex == index ? 'active' : ''}>
@@ -13,6 +12,5 @@ class Tabs extends Component {
 		return <ul class="campaign-manager-tabs nav nav-tabs">{items}</ul>;
 	}
 }
-JSX.register(Tabs);
 
 export default Tabs;
