@@ -13,11 +13,11 @@ class ImageCard extends JSXComponent {
 	renderContent_() {
 		return <div>
 			<div class="campaign-manager-card-title">
-				{this.props.title}
-				<span class="highlight count">{this.props.count}</span>
+				{this.config.title}
+				<span class="highlight count">{this.config.count}</span>
 			</div>
 			<div>
-				<img src={this.props.imageUrl} />
+				<img src={this.config.imageUrl} />
 			</div>
 		</div>;
 	}

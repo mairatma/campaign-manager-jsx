@@ -6,8 +6,8 @@ import TacticsTable from '../table/TacticsTable';
 
 class EditCampaignTactics extends JSXComponent {
 	render() {
-		var editMode = core.isDefAndNotNull(this.props.editCampaignId);
-		var campaign = editMode ? this.props.campaigns[this.props.editCampaignId] : {};
+		var editMode = core.isDefAndNotNull(this.config.editCampaignId);
+		var campaign = editMode ? this.config.campaigns[this.config.editCampaignId] : {};
 
 		return <div class="campaign-manager-edit-campaign-tactics container-fluid campaign-manager white-bg session session-merged-next">
 			<h2>Tactics</h2>
@@ -25,13 +25,13 @@ class EditCampaignTactics extends JSXComponent {
 			</div>
 
 			<TacticsTable
-				destinations={this.props.destinations}
-				selectedTacticIds={this.props.selectedTacticIds}
-				tactics={this.props.tactics}
+				destinations={this.config.destinations}
+				selectedTacticIds={this.config.selectedTacticIds}
+				tactics={this.config.tactics}
 			/>
 			<input
 				type="hidden"
-				value={this.props.selectedTacticIds.join(',')}
+				value={this.config.selectedTacticIds.join(',')}
 				name="tacticIds"
 			/>
 		</div>;

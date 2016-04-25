@@ -9,8 +9,8 @@ class EditCampaignDetails extends JSXComponent {
 	}
 
 	render() {
-		var editMode = core.isDefAndNotNull(this.props.editCampaignId);
-		var campaign = editMode ? this.props.campaigns[this.props.editCampaignId] : {};
+		var editMode = core.isDefAndNotNull(this.config.editCampaignId);
+		var campaign = editMode ? this.config.campaigns[this.config.editCampaignId] : {};
 
 		return <div class="campaign-manager-edit-campaign-details container-fluid white-bg campaign-manager session session-merged-next">
 			<h2>Details</h2>

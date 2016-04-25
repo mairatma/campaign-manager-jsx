@@ -34,23 +34,23 @@ class TacticsTable extends JSXComponent {
 			return <tr data-row={index}>
 				<td>
 					<span>
-						{this.props.destinations[this.props.tactics[id].destinationId].name}
+						{this.config.destinations[this.config.tactics[id].destinationId].name}
 					</span>
 				</td>
-				<td><span>{this.props.tactics[id].name}</span></td>
+				<td><span>{this.config.tactics[id].name}</span></td>
 				<td>
 					<span
-						class={(this.props.tactics[id].oneToOnePromos.length > 0) ? 'glyphicon glyphicon-ok' : ''}>
-					</span>
-				</td>
-				<td>
-					<span
-						class={(this.props.tactics[id].oneToOnePromos.length > 0) ? 'glyphicon glyphicon-ok' : ''}>
+						class={(this.config.tactics[id].oneToOnePromos.length > 0) ? 'glyphicon glyphicon-ok' : ''}>
 					</span>
 				</td>
 				<td>
 					<span
-						class={(this.props.tactics[id].promotionalAds.length > 0) ? 'glyphicon glyphicon-ok' : ''}>
+						class={(this.config.tactics[id].oneToOnePromos.length > 0) ? 'glyphicon glyphicon-ok' : ''}>
+					</span>
+				</td>
+				<td>
+					<span
+						class={(this.config.tactics[id].promotionalAds.length > 0) ? 'glyphicon glyphicon-ok' : ''}>
 					</span>
 				</td>
 				<td>

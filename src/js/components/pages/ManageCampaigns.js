@@ -27,7 +27,7 @@ class ManageCampaigns extends JSXComponent {
 	render() {
 		return <div class="campaign-manager container-fluid">
 			<div class="campaign-manager-manage-campaigns">
-				<Header currentUrl={this.props.currentUrl} basePath={this.props.basePath} />
+				<Header currentUrl={this.config.currentUrl} basePath={this.config.basePath} />
 				<div class="row">
 					<div class="col-md-4"></div>
 					<div class="col-md-4">
@@ -55,9 +55,9 @@ class ManageCampaigns extends JSXComponent {
 				</select>
 			</div>
 			<CampaignTable
-				basePath={this.props.basePath}
+				basePath={this.config.basePath}
 				campaigns={this.filterCampaigns_()}
-				currentUrl={this.props.currentUrl}
+				currentUrl={this.config.currentUrl}
 			/>
 		</div>;
 	}
