@@ -8,7 +8,7 @@ import JSXComponent from 'metal-jsx';
 class CampaignTable extends JSXComponent {
 	edit_(event) {
 		var id = this.getRowId_(event);
-		store.dispatch(Actions.startCampaignEdition(id, this.props.currentUrl));
+		store.dispatch(Actions.startCampaignEdition(id, this.config.currentUrl));
 	}
 
 	getRowId_(event) {
@@ -42,7 +42,7 @@ class CampaignTable extends JSXComponent {
 	}
 
 	renderRows_() {
-		return this.props.campaigns.map(campaign => {
+		return this.config.campaigns.map(campaign => {
 			return <tr data-id={campaign.id}>
 				<td><span>{campaign.name}</span></td>
 				<td>
@@ -55,7 +55,7 @@ class CampaignTable extends JSXComponent {
 				</td>
 				<td>
 					<a
-						href={this.props.basePath + '/edit-campaign/' + campaign.id}
+						href={this.config.basePath + '/edit-campaign/' + campaign.id}
 						data-onclick={this.edit_.bind(this)}>
 						<span class="glyphicon glyphicon-cog table-action-icon table-action-edit"></span>
 					</a>
