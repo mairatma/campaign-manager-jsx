@@ -1,10 +1,9 @@
 'use strict';
 
 import core from 'metal';
-import Component from 'metal-component';
-import JSX from 'metal-jsx';
+import JSXComponent from 'metal-jsx';
 
-class EditCampaignDetails extends Component {
+class EditCampaignDetails extends JSXComponent {
 	addLeading0(num) {
 		return num < 10 ? ('0' + num) : num;
 	}
@@ -82,6 +81,5 @@ class EditCampaignDetails extends Component {
 		</div>
 	}
 }
-JSX.register(EditCampaignDetails);
 
 export default EditCampaignDetails;

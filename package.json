@@ -27,6 +27,7 @@
       [
         "incremental-dom",
         {
+          "componentAsReference": true,
           "prefix": "IncrementalDOM"
         }
       ]
@@ -34,16 +35,17 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.6",
-    "metal-jsx": "^1.0.0-rc.3",
+    "metal-jsx": "^1.0.0-rc.6",
     "metal-router": "^0.0.2",
     "redux": "^3.4.0",
     "senna": "^1.0.1"
   },
   "devDependencies": {
-    "babel-plugin-incremental-dom": "^3.0.3",
+    "babel-plugin-incremental-dom": "mairatma/babel-plugin-incremental-dom#componentAsReferenceBuild",
     "babel-preset-metal": "^3.1.0",
     "babelify": "^7.2.0",
     "browserify": "^13.0.0",
-    "http-server": "^0.9.0"
+    "http-server": "^0.9.0",
+    "watchify": "^3.7.0"
   }
 }

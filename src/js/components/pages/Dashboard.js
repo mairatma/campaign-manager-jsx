@@ -1,14 +1,12 @@
 'use strict';
 
-import Component from 'metal-component';
-import JSX from 'metal-jsx';
+import Card from '../cards/Card';
+import Header from '../Header';
+import ImageCard from '../cards/ImageCard';
+import JSXComponent from 'metal-jsx';
+import TableCard from '../cards/TableCard';
 
-import '../Header';
-import '../cards/Card';
-import '../cards/ImageCard';
-import '../cards/TableCard';
-
-class Dashboard extends Component {
+class Dashboard extends JSXComponent {
 	addDots_(number) {
 		var str = number.toString();
 		var finalStr = '';
@@ -163,6 +161,5 @@ class Dashboard extends Component {
 		return this.props.campaigns.reduce((prev, curr) => prev + curr[name], 0);
 	}
 }
-JSX.register(Dashboard);
 
 export default Dashboard;

@@ -3,15 +3,13 @@
 import { core, object } from 'metal';
 import store from '../../store/store';
 import Actions from '../../actions/Actions';
-import Component from 'metal-component';
-import JSX from 'metal-jsx';
+import BackArrow from '../BackArrow';
+import EditCampaignDetails from '../edit/EditCampaignDetails';
+import EditCampaignGoal from '../edit/EditCampaignGoal';
+import EditCampaignTactics from '../edit/EditCampaignTactics';
+import JSXComponent from 'metal-jsx';
 
-import '../BackArrow';
-import '../edit/EditCampaignDetails';
-import '../edit/EditCampaignGoal';
-import '../edit/EditCampaignTactics';
-
-class EditCampaign extends Component {
+class EditCampaign extends JSXComponent {
 	buildDate_(dateStr, time) {
 		var date = new Date(dateStr ? dateStr : Date.now());
 		date.setHours(time);
@@ -133,6 +131,5 @@ class EditCampaign extends Component {
 		})));
 	}
 }
-JSX.register(EditCampaign);
 
 export default EditCampaign;

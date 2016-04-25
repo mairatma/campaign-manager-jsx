@@ -1,9 +1,8 @@
 'use strict';
 
-import Component from 'metal-component';
-import JSX from 'metal-jsx';
+import JSXComponent from 'metal-jsx';
 
-class Search extends Component {
+class Search extends JSXComponent {
 	render() {
 		return <div class="input-group campaign-manager-search">
 			<input
@@ -19,6 +18,5 @@ class Search extends Component {
 		</div>;
 	}
 }
-JSX.register(Search);
 
 export default Search;

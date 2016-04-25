@@ -1,10 +1,9 @@
 'use strict';
 
 import core from 'metal';
-import Component from 'metal-component';
-import JSX from 'metal-jsx';
+import JSXComponent from 'metal-jsx';
 
-class EditCampaignGoal extends Component {
+class EditCampaignGoal extends JSXComponent {
 	render() {
 		var editMode = core.isDefAndNotNull(this.props.editCampaignId);
 		var campaign = editMode ? this.props.campaigns[this.props.editCampaignId] : {};
@@ -46,6 +45,5 @@ class EditCampaignGoal extends Component {
 		</div>;
 	}
 }
-JSX.register(EditCampaignGoal);
 
 export default EditCampaignGoal;

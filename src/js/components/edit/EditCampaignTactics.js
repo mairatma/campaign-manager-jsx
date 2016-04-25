@@ -1,12 +1,10 @@
 'use strict';
 
 import core from 'metal';
-import Component from 'metal-component';
-import JSX from 'metal-jsx';
+import JSXComponent from 'metal-jsx';
+import TacticsTable from '../table/TacticsTable';
 
-import '../table/TacticsTable';
-
-class EditCampaignTactics extends Component {
+class EditCampaignTactics extends JSXComponent {
 	render() {
 		var editMode = core.isDefAndNotNull(this.props.editCampaignId);
 		var campaign = editMode ? this.props.campaigns[this.props.editCampaignId] : {};
@@ -39,6 +37,5 @@ class EditCampaignTactics extends Component {
 		</div>;
 	}
 }
-JSX.register(EditCampaignTactics);
 
 export default EditCampaignTactics;

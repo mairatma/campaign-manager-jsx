@@ -3,10 +3,9 @@
 import dom from 'metal-dom';
 import store from '../../store/store';
 import Actions from '../../actions/Actions';
-import Component from 'metal-component';
-import JSX from 'metal-jsx';
+import JSXComponent from 'metal-jsx';
 
-class CampaignTable extends Component {
+class CampaignTable extends JSXComponent {
 	edit_(event) {
 		var id = this.getRowId_(event);
 		store.dispatch(Actions.startCampaignEdition(id, this.props.currentUrl));
@@ -71,7 +70,6 @@ class CampaignTable extends Component {
 		});
 	}
 }
-JSX.register(CampaignTable);
 
 var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
 	'August', 'September', 'October', 'November', 'December'];

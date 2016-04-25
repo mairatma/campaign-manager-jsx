@@ -2,11 +2,10 @@
 
 import store from '../store/store';
 import Actions from '../actions/Actions';
-import Component from 'metal-component';
-import JSX from 'metal-jsx';
-import './Tabs';
+import JSXComponent from 'metal-jsx';
+import Tabs from './Tabs';
 
-class Header extends Component {
+class Header extends JSXComponent {
 	render() {
 		var tabs = [
 			{
@@ -42,6 +41,5 @@ class Header extends Component {
 		store.dispatch(Actions.startCampaignCreation(this.props.currentUrl));
 	}
 }
-JSX.register(Header);
 
 export default Header;

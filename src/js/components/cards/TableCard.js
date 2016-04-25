@@ -1,11 +1,9 @@
 'use strict';
 
-import Component from 'metal-component';
-import JSX from 'metal-jsx';
+import Card from './Card';
+import JSXComponent from 'metal-jsx';
 
-import './Card';
-
-class TableCard extends Component {
+class TableCard extends JSXComponent {
 	render() {
 		return <div class="campaign-manager-table-card">
 			<Card children={this.renderContent_.bind(this)} />
@@ -35,6 +33,5 @@ class TableCard extends Component {
 		</div>;
 	}
 }
-JSX.register(TableCard);
 
 export default TableCard;
