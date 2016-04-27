@@ -7,7 +7,7 @@ class Card extends JSXComponent {
 	render() {
 		return <div class={'campaign-manager-card ' + (this.config.cssClass || '')}>
 			<div class="campaign-manager-card-body clearfix">
-				{this.config.children()}
+				{this.config.children}
 			</div>
 		</div>;
 	}

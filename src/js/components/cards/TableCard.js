@@ -5,12 +5,6 @@ import JSXComponent from 'metal-jsx';
 
 class TableCard extends JSXComponent {
 	render() {
-		return <div class="campaign-manager-table-card">
-			<Card children={this.renderContent_.bind(this)} />
-		</div>;
-	}
-
-	renderContent_() {
 		var headers = this.config.headers.map((header, index) => {
 			return <th class={'light-gray' + (index === 0 ? '' : ' text-center')}>
 				{header}
@@ -22,14 +16,17 @@ class TableCard extends JSXComponent {
 			});
 			return <tr>{cells}</tr>;
 		});
-		return <div>
-			<div class="campaign-manager-card-title">{this.config.title}</div>
-			<table class="table table-clean">
-				<thead>
-					<tr>{headers}</tr>
-				</thead>
-				<tbody>{data}</tbody>
-			</table>
+
+		return <div class="campaign-manager-table-card">
+			<Card>
+				<div class="campaign-manager-card-title">{this.config.title}</div>
+				<table class="table table-clean">
+					<thead>
+						<tr>{headers}</tr>
+					</thead>
+					<tbody>{data}</tbody>
+				</table>
+			</Card>
 		</div>;
 	}
 }
