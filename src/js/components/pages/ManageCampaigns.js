@@ -34,31 +34,27 @@ class ManageCampaigns extends JSXComponent {
 						<Search onInput={this.search_.bind(this)} />
 					</div>
 				</div>
-				<Card children={this.renderCardContent_.bind(this)} />
+				<Card>
+					<div class="form-inline select pull-right">
+						<label>View Mode:</label>
+						<select class="form-control">
+							<option value="name">List</option>
+						</select>
+					</div>
+					<div class="form-inline select">
+						<label>Order by:</label>
+						<select class="form-control" data-onchange={this.sort_.bind(this)}>
+							<option value="name">Name</option>
+							<option value="date">Scheduled Date</option>
+						</select>
+					</div>
+					<CampaignTable
+						basePath={this.config.basePath}
+						campaigns={this.filterCampaigns_()}
+						currentUrl={this.config.currentUrl}
+					/>
+				</Card>
 			</div>
-		</div>;
-	}
-
-	renderCardContent_() {
-		return <div>
-			<div class="form-inline select pull-right">
-				<label>View Mode:</label>
-				<select class="form-control">
-					<option value="name">List</option>
-				</select>
-			</div>
-			<div class="form-inline select">
-				<label>Order by:</label>
-				<select class="form-control" data-onchange={this.sort_.bind(this)}>
-					<option value="name">Name</option>
-					<option value="date">Scheduled Date</option>
-				</select>
-			</div>
-			<CampaignTable
-				basePath={this.config.basePath}
-				campaigns={this.filterCampaigns_()}
-				currentUrl={this.config.currentUrl}
-			/>
 		</div>;
 	}
 

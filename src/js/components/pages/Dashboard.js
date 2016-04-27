@@ -28,17 +28,55 @@ class Dashboard extends JSXComponent {
 					<div
 						id="campaign-manager-active-card"
 						class="col-md-4 campaign-manager-card-wrapper">
-						<Card children={this.renderActiveCampaigns_.bind(this)} cssClass="clearfix" />
+						<Card cssClass="clearfix">
+							<div class="col-md-4">
+								<img src={this.config.baseResourceUrl + 'images/target.png'} height="100" />
+							</div>
+							<div class="col-md-8">
+								<div class="highlight big">{this.config.campaigns.length}</div>
+								<div class="campaign-manager-card-label">Active Campaigns</div>
+							</div>
+						</Card>
 					</div>
 					<div
 						id="campaign-manager-amount-card"
 						class="col-md-4 campaign-manager-group campaign-manager-card-wrapper">
-						<Card children={this.renderWinsAndBudget_.bind(this)} cssClass="clearfix" />
+						<Card cssClass="clearfix">
+							<div class="col-md-6">
+								<div class="campaign-manager-amount-value">
+									<span class="highlight">{this.addDots_(this.sum_('influencedWins'))}</span>
+									<span class="light-gray">$</span>
+								</div>
+								<div class="campaign-manager-card-label">Influenced wins</div>
+							</div>
+							<div class="col-md-6">
+								<div class="campaign-manager-amount-value">
+									<span class="highlight">{this.addDots_(this.sum_('budget'))}</span>
+									<span class="light-gray">$</span>
+								</div>
+								<div class="campaign-manager-card-label">Total assigned budget</div>
+							</div>
+						</Card>
 					</div>
 					<div
 						id="campaign-manager-leads-card"
 						class="col-md-4 campaign-manager-card-wrapper">
-						<Card children={this.renderLeadsAndCustomers_.bind(this)} cssClass="clearfix" />
+						<Card cssClass="clearfix">
+							<div class="col-md-5">
+								<div class="highlight big">{this.sum_('leadsCount')}</div>
+								<p class="campaign-manager-card-label">
+									Total leads
+									<span>(Lead Cost 1.26%)</span>
+								</p>
+							</div>
+							<div class="col-md-2 hidden-sm campaign-manager-card-people">
+								<img src={this.config.baseResourceUrl + 'images/people.png'} />
+							</div>
+							<div class="col-md-5">
+								<div class="highlight big">{this.sum_('influencedCustomers')}</div>
+								<p class="campaign-manager-card-label">Influenced customers</p>
+							</div>
+						</Card>
 					</div>
 				</div>
 
@@ -103,56 +141,6 @@ class Dashboard extends JSXComponent {
 						/>
 					</div>
 				</div>
-			</div>
-		</div>;
-	}
-
-	renderActiveCampaigns_() {
-		return <div>
-			<div class="col-md-4">
-				<img src={this.config.baseResourceUrl + 'images/target.png'} height="100" />
-			</div>
-			<div class="col-md-8">
-				<div class="highlight big">{this.config.campaigns.length}</div>
-				<div class="campaign-manager-card-label">Active Campaigns</div>
-			</div>
-		</div>;
-	}
-
-	renderLeadsAndCustomers_() {
-		return <div>
-			<div class="col-md-5">
-				<div class="highlight big">{this.sum_('leadsCount')}</div>
-				<p class="campaign-manager-card-label">
-					Total leads
-					<span>(Lead Cost 1.26%)</span>
-				</p>
-			</div>
-			<div class="col-md-2 hidden-sm campaign-manager-card-people">
-				<img src={this.config.baseResourceUrl + 'images/people.png'} />
-			</div>
-			<div class="col-md-5">
-				<div class="highlight big">{this.sum_('influencedCustomers')}</div>
-				<p class="campaign-manager-card-label">Influenced customers</p>
-			</div>
-		</div>;
-	}
-
-	renderWinsAndBudget_() {
-		return <div>
-			<div class="col-md-6">
-				<div class="campaign-manager-amount-value">
-					<span class="highlight">{this.addDots_(this.sum_('influencedWins'))}</span>
-					<span class="light-gray">$</span>
-				</div>
-				<div class="campaign-manager-card-label">Influenced wins</div>
-			</div>
-			<div class="col-md-6">
-				<div class="campaign-manager-amount-value">
-					<span class="highlight">{this.addDots_(this.sum_('budget'))}</span>
-					<span class="light-gray">$</span>
-				</div>
-				<div class="campaign-manager-card-label">Total assigned budget</div>
 			</div>
 		</div>;
 	}
