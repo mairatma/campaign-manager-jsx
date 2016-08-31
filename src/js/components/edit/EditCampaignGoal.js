@@ -5,8 +5,8 @@ import JSXComponent from 'metal-jsx';
 
 class EditCampaignGoal extends JSXComponent {
 	render() {
-		var editMode = core.isDefAndNotNull(this.config.editCampaignId);
-		var campaign = editMode ? this.config.campaigns[this.config.editCampaignId] : {};
+		var editMode = core.isDefAndNotNull(this.props.editCampaignId);
+		var campaign = editMode ? this.props.campaigns[this.props.editCampaignId] : {};
 
 		return <div class="campaign-manager-edit-campaign-goal container-fluid campaign-manager session">
 			<div class="campaign-manager-card">

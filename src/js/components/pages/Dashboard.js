@@ -23,17 +23,17 @@ class Dashboard extends JSXComponent {
 	render() {
 		return <div class="campaign-manager container-fluid">
 			<div class="campaign-manager-dashboard">
-				<Header currentUrl={this.config.currentUrl} basePath={this.config.basePath} />
+				<Header currentUrl={this.props.currentUrl} basePath={this.props.basePath} />
 				<div class="row">
 					<div
 						id="campaign-manager-active-card"
 						class="col-md-4 campaign-manager-card-wrapper">
 						<Card cssClass="clearfix">
 							<div class="col-md-4">
-								<img src={this.config.baseResourceUrl + 'images/target.png'} height="100" />
+								<img src={this.props.baseResourceUrl + 'images/target.png'} height="100" />
 							</div>
 							<div class="col-md-8">
-								<div class="highlight big">{this.config.campaigns.length}</div>
+								<div class="highlight big">{this.props.campaigns.length}</div>
 								<div class="campaign-manager-card-label">Active Campaigns</div>
 							</div>
 						</Card>
@@ -70,7 +70,7 @@ class Dashboard extends JSXComponent {
 								</p>
 							</div>
 							<div class="col-md-2 hidden-sm campaign-manager-card-people">
-								<img src={this.config.baseResourceUrl + 'images/people.png'} />
+								<img src={this.props.baseResourceUrl + 'images/people.png'} />
 							</div>
 							<div class="col-md-5">
 								<div class="highlight big">{this.sum_('influencedCustomers')}</div>
@@ -84,7 +84,7 @@ class Dashboard extends JSXComponent {
 					<div class="col-md-4 campaign-manager-card-wrapper">
 						<ImageCard
 							count={2894}
-							imageUrl={this.config.baseResourceUrl + 'images/chart.png'}
+							imageUrl={this.props.baseResourceUrl + 'images/chart.png'}
 							title="Destinations views"
 						/>
 					</div>
@@ -104,7 +104,7 @@ class Dashboard extends JSXComponent {
 					<div class="col-md-4 campaign-manager-card-wrapper">
 						<ImageCard
 							count={2894}
-							imageUrl={this.config.baseResourceUrl + 'images/chartWithLabels.png'}
+							imageUrl={this.props.baseResourceUrl + 'images/chartWithLabels.png'}
 							title="Destinations conversions"
 						/>
 					</div>
@@ -114,7 +114,7 @@ class Dashboard extends JSXComponent {
 					<div class="col-md-4 campaign-manager-card-wrapper">
 						<ImageCard
 							count={2894}
-							imageUrl={this.config.baseResourceUrl + 'images/chart.png'}
+							imageUrl={this.props.baseResourceUrl + 'images/chart.png'}
 							title="Banner Ads views"
 						/>
 					</div>
@@ -146,7 +146,7 @@ class Dashboard extends JSXComponent {
 	}
 
 	sum_(name) {
-		return this.config.campaigns.reduce((prev, curr) => prev + curr[name], 0);
+		return this.props.campaigns.reduce((prev, curr) => prev + curr[name], 0);
 	}
 }
 

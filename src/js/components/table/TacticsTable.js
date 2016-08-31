@@ -6,9 +6,9 @@ import JSXComponent from 'metal-jsx';
 class TacticsTable extends JSXComponent {
 	remove_() {
 		var row = parseInt(dom.parent(event.target, 'tr').getAttribute('data-row'), 10);
-		var tacticIds = this.selectedTacticIds.concat();
+		var tacticIds = this.props.selectedTacticIds.concat();
 		tacticIds.splice(row, 1);
-		this.selectedTacticIds = tacticIds;
+		this.props.selectedTacticIds = tacticIds;
 	}
 
 	render() {
@@ -30,27 +30,27 @@ class TacticsTable extends JSXComponent {
 	}
 
 	renderRows_() {
-		return this.selectedTacticIds.map((id, index) => {
+		return this.props.selectedTacticIds.map((id, index) => {
 			return <tr data-row={index}>
 				<td>
 					<span>
-						{this.config.destinations[this.config.tactics[id].destinationId].name}
+						{this.props.destinations[this.props.tactics[id].destinationId].name}
 					</span>
 				</td>
-				<td><span>{this.config.tactics[id].name}</span></td>
+				<td><span>{this.props.tactics[id].name}</span></td>
 				<td>
 					<span
-						class={(this.config.tactics[id].oneToOnePromos.length > 0) ? 'glyphicon glyphicon-ok' : ''}>
-					</span>
-				</td>
-				<td>
-					<span
-						class={(this.config.tactics[id].oneToOnePromos.length > 0) ? 'glyphicon glyphicon-ok' : ''}>
+						class={(this.props.tactics[id].oneToOnePromos.length > 0) ? 'glyphicon glyphicon-ok' : ''}>
 					</span>
 				</td>
 				<td>
 					<span
-						class={(this.config.tactics[id].promotionalAds.length > 0) ? 'glyphicon glyphicon-ok' : ''}>
+						class={(this.props.tactics[id].oneToOnePromos.length > 0) ? 'glyphicon glyphicon-ok' : ''}>
+					</span>
+				</td>
+				<td>
+					<span
+						class={(this.props.tactics[id].promotionalAds.length > 0) ? 'glyphicon glyphicon-ok' : ''}>
 					</span>
 				</td>
 				<td>
@@ -64,7 +64,7 @@ class TacticsTable extends JSXComponent {
 	}
 }
 
-TacticsTable.STATE = {
+TacticsTable.PROPS = {
 	selectedTacticIds: {
 		validator: Array.isArray
 	}

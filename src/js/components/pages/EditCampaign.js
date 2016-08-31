@@ -33,16 +33,16 @@ class EditCampaign extends JSXComponent {
 	}
 
 	render() {
-		var editMode = core.isDefAndNotNull(this.config.editCampaignId);
+		var editMode = core.isDefAndNotNull(this.props.editCampaignId);
 		var editCampaign =
-			editMode ? this.config.campaigns[this.config.editCampaignId] : null;
+			editMode ? this.props.campaigns[this.props.editCampaignId] : null;
 
 		return <div class="campaign-manager-edit-campaign">
 			<div class="container-fluid white-bg campaign-manager">
 				<div class="campaign-manager-page-title">
 					<BackArrow
-						basePath={this.config.basePath}
-						sourceUrl={this.config.sourceUrl}
+						basePath={this.props.basePath}
+						sourceUrl={this.props.sourceUrl}
 					/>
 					<h1>
 						{editMode ? 'Edit' : 'New'} Campaign
@@ -52,8 +52,8 @@ class EditCampaign extends JSXComponent {
 
 			<form class="form-horizontal">
 				<EditCampaignDetails
-					campaigns={this.config.campaigns}
-					editCampaignId={this.config.editCampaignId}
+					campaigns={this.props.campaigns}
+					editCampaignId={this.props.editCampaignId}
 				/>
 
 				<div class="campaign-manager-edit-campaign-journey container-fluid white-bg campaign-manager session">
@@ -83,27 +83,27 @@ class EditCampaign extends JSXComponent {
 				</div>
 
 				<EditCampaignGoal
-					campaigns={this.config.campaigns}
-					editCampaignId={this.config.editCampaignId}
+					campaigns={this.props.campaigns}
+					editCampaignId={this.props.editCampaignId}
 				/>
 
 				<EditCampaignTactics
-					destinations={this.config.destinations}
+					destinations={this.props.destinations}
 					selectedTacticIds={editCampaign ? editCampaign.tacticIds : []}
-					tactics={this.config.tactics}
+					tactics={this.props.tactics}
 				/>
 
 				<div class="container-fluid campaign-manager white-bg session">
 					<div class="form-group">
 						<div class="col-sm-10">
 							<a
-								href={this.config.basePath + this.config.sourceUrl}
+								href={this.props.basePath + this.props.sourceUrl}
 								class="btn btn-lg btn-success"
 								data-onclick={this.save_.bind(this)}>
 								{editMode ? 'Save' : 'Create'} Campaign
 							</a>
 							<a
-								href={this.config.basePath + this.config.sourceUrl}
+								href={this.props.basePath + this.props.sourceUrl}
 								class="btn btn-lg btn-lighter">
 								Cancel
 							</a>
@@ -117,7 +117,7 @@ class EditCampaign extends JSXComponent {
 	save_() {
 		var data = this.getData_();
 		store.dispatch(Actions.saveCampaign(object.mixin(data, {
-			id: core.isNumber(this.config.editCampaignId) ? this.config.editCampaignId : undefined,
+			id: core.isNumber(this.props.editCampaignId) ? this.props.editCampaignId : undefined,
 			budget: parseInt(data.budget, 10) || 0,
 			startDate: this.buildDate_(data.startDate, data.startDateTime),
 			endDate: this.buildDate_(data.endDate, data.endDateTime),

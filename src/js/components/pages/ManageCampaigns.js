@@ -9,13 +9,13 @@ import Search from '../search/Search';
 
 class ManageCampaigns extends JSXComponent {
 	filterCampaigns_() {
-		return this.campaigns
+		return this.props.campaigns
 			.filter(campaign => {
-				return !this.searchBy ||
-					campaign.name.toLowerCase().startsWith(this.searchBy.toLowerCase());
+				return !this.state.searchBy ||
+					campaign.name.toLowerCase().startsWith(this.state.searchBy.toLowerCase());
 			})
 			.sort((c1, c2) => {
-				if (this.sortBy === 'date') {
+				if (this.state.sortBy === 'date') {
 					var start = this.toDate_(c1.startDate) - this.toDate_(c2.startDate);
 					return start !== 0 ? start : this.toDate_(c1.endDate) - this.toDate_(c2.endDate);
 				} else {
@@ -27,7 +27,7 @@ class ManageCampaigns extends JSXComponent {
 	render() {
 		return <div class="campaign-manager container-fluid">
 			<div class="campaign-manager-manage-campaigns">
-				<Header currentUrl={this.config.currentUrl} basePath={this.config.basePath} />
+				<Header currentUrl={this.props.currentUrl} basePath={this.props.basePath} />
 				<div class="row">
 					<div class="col-md-4"></div>
 					<div class="col-md-4">
@@ -49,9 +49,9 @@ class ManageCampaigns extends JSXComponent {
 						</select>
 					</div>
 					<CampaignTable
-						basePath={this.config.basePath}
+						basePath={this.props.basePath}
 						campaigns={this.filterCampaigns_()}
-						currentUrl={this.config.currentUrl}
+						currentUrl={this.props.currentUrl}
 					/>
 				</Card>
 			</div>
@@ -59,11 +59,11 @@ class ManageCampaigns extends JSXComponent {
 	}
 
 	search_(event) {
-		this.searchBy = event.target.value;
+		this.state.searchBy = event.target.value;
 	}
 
 	sort_(event) {
-		this.sortBy = event.target.value;
+		this.state.sortBy = event.target.value;
 	}
 
 	toDate_(obj) {
@@ -72,9 +72,6 @@ class ManageCampaigns extends JSXComponent {
 }
 
 ManageCampaigns.STATE = {
-	campaigns: {
-		validator: Array.isArray
-	},
 	searchBy: {
 		validator: core.isString
 	},
